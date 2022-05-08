@@ -1,0 +1,109 @@
+.playlist-detail {
+  height: auto;
+  width: 80%;
+  padding: 30px;
+  display: flex
+}
+
+.playlist-image {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.playlist-info-wrapper {
+  width: 100%;
+  padding: 0 50px;
+}
+
+.playlist-title {
+  color: #fff;
+  font-size: 50px;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.playlist-title:hover {
+  background: -webkit-linear-gradient(90deg, rgba(175, 100, 128, 1) 0%, rgba(195, 206, 229, 1) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.playlist-description {
+  color: #fff;
+  font-size: 23px;
+  font-weight: 100;
+}
+
+.playlist-time {
+  color: #fff;
+  font-size: 20px;
+}
+
+.playlist-tr {
+  border: none
+}
+
+.playlist-tr:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.artist-name-container {
+  position: relative;
+  pointer-events: fill;
+  width: auto;
+}
+
+.artist-name-container:hover {
+  background: -webkit-linear-gradient(45deg, rgba(12, 205, 163, 1) 0%, rgba(193, 252, 211, 1) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+table {
+  width: 95%;
+}
+
+table tr td {
+  color: #fff;
+  cursor: pointer;
+  padding: 10px 5px;
+  font-size: 20px;
+  font-weight: 100;
+}
+
+.album-artis-name {
+  display: flex;
+  flex-direction: row;
+}
+
+.album-artis-name .names {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  margin: auto 5px;
+}
+
+
+/* Liked Songs */
+
+.liked-songs-bg {
+  width: auto;
+  height: auto;
+  background: linear-gradient(45deg, rgba(194, 46, 208, 1) 0%, rgba(95, 250, 224, 1) 100%);
+  padding: 20px;
+  border-radius: 50%;
+}
+
+.heart {
+  font-size: 80px;
+  color: #fff;
+}
+
+.liked-songs-info-wrapper {
+  display: flex;
+  align-items: center;
+}
