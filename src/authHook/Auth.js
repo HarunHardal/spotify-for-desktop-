@@ -13,7 +13,7 @@ export default function Auth(code) {
 
   useEffect(() => {
     axios
-      .post("http://localhost:3001/login", {
+      .post("https://spotify-for-desktop.netlify.app/", {
         code,
       })
       .then((res) => {
@@ -31,7 +31,7 @@ export default function Auth(code) {
     if (!refreshToken || !expiresIn) return
     const timeOut = setInterval(() => {
       axios
-        .post("http://localhost:3001/refresh", {
+        .post("https://spotify-for-desktop.netlify.app//refresh", {
           refreshToken,
         })
         .then((res) => {

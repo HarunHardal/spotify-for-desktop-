@@ -108,10 +108,8 @@ export default function LeftSideBar({
 
           <div className="playlists">
             <ul className="">
-              {playlist.length < 1 ? (
-                <ul>You don't have any playlists </ul>
-              ) : (
-                playlist?.map((e) => (
+              {
+                 playlist?.map((e) => (
                   <li
                     className="playlist-name"
                     key={e.name}
@@ -130,7 +128,7 @@ export default function LeftSideBar({
                     {e.name}
                   </li>
                 ))
-              )}
+              }
             </ul>
           </div>
         </ul>

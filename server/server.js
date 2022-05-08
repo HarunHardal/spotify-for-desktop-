@@ -9,7 +9,7 @@ app.use(bodyParser.json());
 app.post("/refresh", (req, res) => {
   const refreshToken = req.body.refreshToken;
   const spotifyApi = new SpotifyWeb({
-    redirectUri: "http://localhost:3000",
+    redirectUri: "https://spotify-for-desktop.netlify.app/",
     clientId: "eb815cbe4f634fc4b5b2e4764971491b",
     clientSecret: "3539c40161804828817cb4cce873979a",
     refreshToken,
@@ -32,7 +32,7 @@ app.post("/refresh", (req, res) => {
 app.post("/login", (req, res) => {
   const code = req.body.code;
   const spotifyApi = new SpotifyWeb({
-    redirectUri: "http://localhost:3000",
+    redirectUri: "https://spotify-for-desktop.netlify.app/",
     clientId: "eb815cbe4f634fc4b5b2e4764971491b",
     clientSecret: "3539c40161804828817cb4cce873979a",
   });
@@ -51,4 +51,4 @@ app.post("/login", (req, res) => {
     });
 });
 
-app.listen(3001);
+app.listen(process.env.PORT || 3001);
