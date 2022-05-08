@@ -13,7 +13,7 @@ export default function Auth(code) {
 
   useEffect(() => {
     axios
-      .post("https://spotify-for-desktop.netlify.app/", {
+      .post(`${process.env.PORT}/login`, {
         code,
       })
       .then((res) => {
@@ -28,10 +28,10 @@ export default function Auth(code) {
   }, [code]);
 
   useEffect(() => {
-    if (!refreshToken || !expiresIn) return
+    if (!refreshToken || !expiresIn) return;
     const timeOut = setInterval(() => {
       axios
-        .post("https://spotify-for-desktop.netlify.app//refresh", {
+        .post(`${process.env.PORT}/refresh`, {
           refreshToken,
         })
         .then((res) => {
@@ -42,9 +42,9 @@ export default function Auth(code) {
           window.location = "/";
         });
     }, (expiresIn - 60) * 1000);
-    return ()=> clearInterval(timeOut)
+    return () => clearInterval(timeOut);
   }, [refreshToken, expiresIn]);
 
-  spotifyApi.setAccessToken(accessToken)
+  spotifyApi.setAccessToken(accessToken);
   return accessToken;
 }
