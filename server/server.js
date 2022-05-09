@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
+const PORT = process.env.PORT || 3001;
 
 app.post("/refresh", (req, res) => {
   const refreshToken = req.body.refreshToken;
@@ -30,6 +31,7 @@ app.post("/refresh", (req, res) => {
 });
 
 app.post("/login", (req, res) => {
+  console.log('in login')
   const code = req.body.code;
   const spotifyApi = new SpotifyWeb({
     redirectUri: "https://spotify-for-desktop.netlify.app",
@@ -51,4 +53,4 @@ app.post("/login", (req, res) => {
     });
 });
 
-app.listen(process.env.PORT || 3001);
+app.listen(PORT);
