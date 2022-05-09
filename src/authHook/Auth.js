@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import SpotifyWebApi from "spotify-web-api-node";
-
+const server = process.env.PORT
 const spotifyApi = new SpotifyWebApi({
   clientId: "eb815cbe4f634fc4b5b2e4764971491b",
 });
@@ -13,7 +13,7 @@ export default function Auth(code) {
 
   useEffect(() => {
     axios
-      .post(`${process.env.PORT}/login`, {
+      .post(`${server}/login`, {
         code,
       })
       .then((res) => {
@@ -31,7 +31,7 @@ export default function Auth(code) {
     if (!refreshToken || !expiresIn) return;
     const timeOut = setInterval(() => {
       axios
-        .post(`${process.env.PORT}/refresh`, {
+        .post(`${server}/refresh`, {
           refreshToken,
         })
         .then((res) => {
