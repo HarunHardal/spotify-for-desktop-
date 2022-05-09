@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import SpotifyWebApi from "spotify-web-api-node";
-const server = process.env.PORT
+
 const spotifyApi = new SpotifyWebApi({
   clientId: "eb815cbe4f634fc4b5b2e4764971491b",
 });
@@ -13,7 +13,7 @@ export default function Auth(code) {
 
   useEffect(() => {
     axios
-      .post(`${server}/login`, {
+      .post("https://spotify-for-desktop.herokuapp.com/login", {
         code,
       })
       .then((res) => {
@@ -28,10 +28,10 @@ export default function Auth(code) {
   }, [code]);
 
   useEffect(() => {
-    if (!refreshToken || !expiresIn) return;
+    if (!refreshToken || !expiresIn) return
     const timeOut = setInterval(() => {
       axios
-        .post(`${server}/refresh`, {
+        .post("https://spotify-for-desktop.herokuapp.com/refresh", {
           refreshToken,
         })
         .then((res) => {
@@ -42,9 +42,9 @@ export default function Auth(code) {
           window.location = "/";
         });
     }, (expiresIn - 60) * 1000);
-    return () => clearInterval(timeOut);
+    return ()=> clearInterval(timeOut)
   }, [refreshToken, expiresIn]);
 
-  spotifyApi.setAccessToken(accessToken);
+  spotifyApi.setAccessToken(accessToken)
   return accessToken;
 }
