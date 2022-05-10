@@ -47,7 +47,7 @@ export default function MusicPlayer({
         }
       });
     }, 1000);
-  }, []);
+  }, [spotifyApi]);
 
   useEffect(() => {
     setState({ artisname: artistName, trackname: trackName });
