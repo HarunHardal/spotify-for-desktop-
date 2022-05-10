@@ -17,7 +17,7 @@ export default function MusicPlayer({
   background,
   artistName,
   trackName,
-  ani,
+  //ani,
   seekPos,
   isPlaying,
   next,
@@ -34,8 +34,8 @@ export default function MusicPlayer({
   const [volumeLevel, setVolumeLevel] = useState();
   const progressRef = useRef();
   const [progress, setProgress] = useState(0);
-  const [duration1, setDuration] = useState(0);
-
+  const [duration, setDuration] = useState(0);
+  const [ani, setAni] = useState(false)
   useEffect(() => {
     progressRef.current = setInterval(() => {
       spotifyApi.getMyCurrentPlaybackState().then(function (data) {
@@ -55,6 +55,7 @@ export default function MusicPlayer({
     if (stateRef.current !== state) {
       setCounter(1);
     }
+    setAni(true)
   }, [state]);
   useEffect(() => {
     if (playlistArray.length === 0) {
@@ -86,25 +87,15 @@ export default function MusicPlayer({
       seekSetting;
 
     if (isPlaying) {
-      if (!duration1) return null;
+      if (!duration) return null;
       ref.current = setInterval(() => {
-        // round.setAttribute(
-        //   "stroke-dasharray",
-        //   `${(counter / 100) * 825}, 2000`
-        // );
         setCounter(counter + 1);
-      }, duration1 / 100);
+      }, duration / 100);
 
       return () => {
         clearInterval(ref.current);
       };
     }
-    // if(isPlaying){
-    //   if (counter === 99) {
-    //     next();
-    //     setCounter(2);
-    //   }
-    //}
 
     round.addEventListener(getMouseDown(), onMouseDown);
     document.addEventListener(getMouseUp(), onMouseUp);
@@ -259,7 +250,7 @@ export default function MusicPlayer({
         return "touchmove";
       }
     }
-  }, [duration1, volumeFunc, counter, isPlaying, next]);
+  }, [duration, volumeFunc, counter, isPlaying, next]);
 
   useEffect(() => {
     if (!recentlyPlayed) return;
@@ -279,7 +270,7 @@ export default function MusicPlayer({
       className="music-player-container"
       onMouseUp={() => {
         if (seekBar) {
-          seekPos(counter * (duration1 / 100));
+          seekPos(counter * (duration / 100));
           setSeekBar(false);
         }
         if (volume) {
@@ -398,7 +389,7 @@ export default function MusicPlayer({
           }}
     
         />
-        <p className="">{ms2minutes(duration1)}</p>
+        <p className="">{ms2minutes(duration)}</p>
       </div>
       <div style={{ pointerEvents: "none" }} className="album-image">
         {<img src={image?.url} alt="a"></img>}
