@@ -17,7 +17,7 @@ export default function MusicPlayer({
   background,
   artistName,
   trackName,
-  //ani,
+  ani,
   seekPos,
   isPlaying,
   next,
@@ -35,7 +35,7 @@ export default function MusicPlayer({
   const progressRef = useRef();
   const [progress, setProgress] = useState(0);
   const [duration, setDuration] = useState(0);
-  const [ani, setAni] = useState(false)
+
   useEffect(() => {
     progressRef.current = setInterval(() => {
       spotifyApi.getMyCurrentPlaybackState().then(function (data) {
@@ -55,7 +55,6 @@ export default function MusicPlayer({
     if (stateRef.current !== state) {
       setCounter(1);
     }
-    setAni(true)
   }, [state]);
   useEffect(() => {
     if (playlistArray.length === 0) {
