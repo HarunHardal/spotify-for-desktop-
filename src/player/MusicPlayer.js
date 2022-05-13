@@ -37,7 +37,6 @@ export default function MusicPlayer({
   const [duration, setDuration] = useState(0);
 
   useEffect(() => {
-   //progress is here
    if (isPlaying) {
     if (!duration) return null;
     ref.current = setInterval(() => {
@@ -57,7 +56,7 @@ export default function MusicPlayer({
       clearInterval(ref.current);
     };
   }
-  }, [isPlaying]);
+  }, []);
 
   useEffect(() => {
     setState({ artisname: artistName, trackname: trackName });
