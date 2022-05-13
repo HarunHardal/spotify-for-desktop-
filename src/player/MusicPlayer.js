@@ -38,9 +38,10 @@ export default function MusicPlayer({
 
   useEffect(() => {
    if (isPlaying) {
-    if (!duration) return null;
+  //  if (!duration) return null;
     ref.current = setInterval(() => {
       setCounter(counter + 1);
+      console.log('ASDDASD')
     }, duration / 100);
 
     progressRef.current = setInterval(() => {
@@ -50,10 +51,11 @@ export default function MusicPlayer({
           setDuration(data.body.item.duration_ms);
         }
       });
+      console.log('ASD')
     }, 1000);
     
     return () => {
-      clearInterval(ref.current);
+      clearInterval(ref.current,progressRef.current);
     };
   }
   }, []);
