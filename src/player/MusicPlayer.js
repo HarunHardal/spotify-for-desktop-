@@ -9,7 +9,7 @@ import {
   faVolumeOff,
   faVolumeHigh,
 } from "@fortawesome/free-solid-svg-icons";
-import useInterval from 'use-interval'
+import useInterval from "use-interval";
 
 export default function MusicPlayer({
   recentlyPlayed,
@@ -37,24 +37,20 @@ export default function MusicPlayer({
   const [progress, setProgress] = useState(0);
   const [duration1, setDuration] = useState(0);
 
-  
-    useInterval(()=>{
-      if(!duration1) return null;
-     setCounter(counter + 1);
-    },duration1/100)
- 
-  
+  useInterval(() => {
+    if (!duration1 && !isPlaying) return null;
+    setCounter(counter + 1);
+  }, duration1 / 100);
 
-   useInterval(()=>{
-     if(!isPlaying) return null;
+  useInterval(() => {
+    if (!isPlaying) return null;
     spotifyApi.getMyCurrentPlaybackState().then(function (data) {
       if (data.body && data.body.is_playing) {
         setProgress(data.body.progress_ms);
         setDuration(data.body.item.duration_ms);
       }
     });
-   },1000)
-
+  }, 1000);
 
   useEffect(() => {
     progressRef.current = setInterval(() => {
@@ -65,7 +61,7 @@ export default function MusicPlayer({
         }
       });
     }, 1000);
-    return clearInterval(progressRef.current)
+    return clearInterval(progressRef.current);
   }, []);
 
   useEffect(() => {
@@ -106,40 +102,40 @@ export default function MusicPlayer({
       finalAngleInDegrees,
       seekSetting;
 
-   // if (isPlaying) {
-   //   if (!duration1) return null;
-   //   ref.current = setInterval(() => {
-   //     // round.setAttribute(
-   //     //   "stroke-dasharray",
-   //     //   `${(counter / 100) * 825}, 2000`
-   //     // );
-   //     setCounter(counter + 1);
-   //   }, duration1 / 100);
-   //
-   //   return () => {
-   //     clearInterval(ref.current);
-   //   };
-   // }
+    // if (isPlaying) {
+    //   if (!duration1) return null;
+    //   ref.current = setInterval(() => {
+    //     // round.setAttribute(
+    //     //   "stroke-dasharray",
+    //     //   `${(counter / 100) * 825}, 2000`
+    //     // );
+    //     setCounter(counter + 1);
+    //   }, duration1 / 100);
+    //
+    //   return () => {
+    //     clearInterval(ref.current);
+    //   };
+    // }
 
- // if (isPlaying) {
- //   if (!duration1) return null;
- //   ref.current = setInterval(() => {
- //     setCounter(counter + 1);
- //   }, duration1 / 100);
+    // if (isPlaying) {
+    //   if (!duration1) return null;
+    //   ref.current = setInterval(() => {
+    //     setCounter(counter + 1);
+    //   }, duration1 / 100);
 
- //   progressRef.current = setInterval(() => {
- //     spotifyApi.getMyCurrentPlaybackState().then(function (data) {
- //       if (data.body && data.body.is_playing) {
- //         setProgress(data.body.progress_ms);
- //         setDuration(data.body.item.duration_ms);
- //       }
- //     });
- //   }, 1000);
+    //   progressRef.current = setInterval(() => {
+    //     spotifyApi.getMyCurrentPlaybackState().then(function (data) {
+    //       if (data.body && data.body.is_playing) {
+    //         setProgress(data.body.progress_ms);
+    //         setDuration(data.body.item.duration_ms);
+    //       }
+    //     });
+    //   }, 1000);
 
- //   return () => {
- //     clearInterval(ref.current);
- //   };
- // }
+    //   return () => {
+    //     clearInterval(ref.current);
+    //   };
+    // }
 
     // if(isPlaying){
     //   if (counter === 99) {
@@ -412,7 +408,11 @@ export default function MusicPlayer({
         <FontAwesomeIcon
           className="media-buttons padding"
           icon={faBackwardStep}
-          style={playlistArray.length<2?{pointerEvents:'none'}:{pointerEvents:'visible'}}
+          style={
+            playlistArray.length < 2
+              ? { pointerEvents: "none" }
+              : { pointerEvents: "visible" }
+          }
           onClick={() => prev()}
         />
         {isPlaying ? (
@@ -420,7 +420,6 @@ export default function MusicPlayer({
             onClick={() => handlePlayPause()}
             icon={faPause}
             className="media-buttons padding"
-            
           />
         ) : (
           <FontAwesomeIcon
@@ -433,12 +432,15 @@ export default function MusicPlayer({
         <FontAwesomeIcon
           icon={faForwardStep}
           className="media-buttons padding"
-          style={playlistArray.length<2?{pointerEvents:'none'}:{pointerEvents:'visible'}}
+          style={
+            playlistArray.length < 2
+              ? { pointerEvents: "none" }
+              : { pointerEvents: "visible" }
+          }
           onClick={() => {
             next();
             setCounter(0);
           }}
-    
         />
         <p className="">{ms2minutes(duration1)}</p>
       </div>
