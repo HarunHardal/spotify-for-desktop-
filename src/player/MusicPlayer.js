@@ -9,6 +9,7 @@ import {
   faVolumeOff,
   faVolumeHigh,
 } from "@fortawesome/free-solid-svg-icons";
+import useInterval from 'use-interval'
 
 export default function MusicPlayer({
   recentlyPlayed,
@@ -35,6 +36,19 @@ export default function MusicPlayer({
   const progressRef = useRef();
   const [progress, setProgress] = useState(0);
   const [duration1, setDuration] = useState(0);
+   useInterval(()=>{
+    setCounter(counter + 1);
+   },duration1/100)
+
+   useInterval(()=>{
+    spotifyApi.getMyCurrentPlaybackState().then(function (data) {
+      if (data.body && data.body.is_playing) {
+        setProgress(data.body.progress_ms);
+        setDuration(data.body.item.duration_ms);
+      }
+    });
+   },1000)
+
 
   useEffect(() => {
     progressRef.current = setInterval(() => {
@@ -101,25 +115,25 @@ export default function MusicPlayer({
    //   };
    // }
 
-    if (isPlaying) {
-      if (!duration1) return null;
-      ref.current = setInterval(() => {
-        setCounter(counter + 1);
-      }, duration1 / 100);
+ // if (isPlaying) {
+ //   if (!duration1) return null;
+ //   ref.current = setInterval(() => {
+ //     setCounter(counter + 1);
+ //   }, duration1 / 100);
 
-      progressRef.current = setInterval(() => {
-        spotifyApi.getMyCurrentPlaybackState().then(function (data) {
-          if (data.body && data.body.is_playing) {
-            setProgress(data.body.progress_ms);
-            setDuration(data.body.item.duration_ms);
-          }
-        });
-      }, 1000);
+ //   progressRef.current = setInterval(() => {
+ //     spotifyApi.getMyCurrentPlaybackState().then(function (data) {
+ //       if (data.body && data.body.is_playing) {
+ //         setProgress(data.body.progress_ms);
+ //         setDuration(data.body.item.duration_ms);
+ //       }
+ //     });
+ //   }, 1000);
 
-      return () => {
-        clearInterval(ref.current);
-      };
-    }
+ //   return () => {
+ //     clearInterval(ref.current);
+ //   };
+ // }
 
     // if(isPlaying){
     //   if (counter === 99) {
