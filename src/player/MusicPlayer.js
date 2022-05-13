@@ -38,7 +38,8 @@ export default function MusicPlayer({
   const [duration1, setDuration] = useState(0);
 
   useInterval(() => {
-    if (!duration1 && !isPlaying) return null
+    if (!duration1) return null
+    else if(!isPlaying) return null
     setCounter(counter + 1);
   }, duration1 / 100);
 
