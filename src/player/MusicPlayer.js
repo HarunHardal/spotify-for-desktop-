@@ -38,7 +38,7 @@ export default function MusicPlayer({
 
   useEffect(() => {
    if (isPlaying) {
-  //  if (!duration) return null;
+    if (!duration) return null;
     ref.current = setInterval(() => {
       setCounter(counter + 1);
       console.log('ASDDASD')
@@ -58,7 +58,7 @@ export default function MusicPlayer({
       clearInterval(ref.current,progressRef.current);
     };
   }
-  }, []);
+  }, [isPlaying, duration, spotifyApi,counter]);
 
   useEffect(() => {
     setState({ artisname: artistName, trackname: trackName });
