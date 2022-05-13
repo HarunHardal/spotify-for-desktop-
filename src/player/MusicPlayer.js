@@ -37,25 +37,29 @@ export default function MusicPlayer({
   const [duration, setDuration] = useState(0);
 
   useEffect(() => {
-   if (isPlaying) {
-    if (!duration) return null;
-    ref.current = setInterval(() => {
-      setCounter(counter + 1);
-      console.log('ASDDASD')
-    }, duration / 100);
+    if (isPlaying) {
+      if (!duration) return null;
+      ref.current = window.setInterval(() => {
+        setCounter(counter + 1);
+        console.log("ASDDASD");
+      }, duration / 100);
 
-    progressRef.current = setInterval(() => {
-      spotifyApi.getMyCurrentPlaybackState().then(function (data) {
-        if (data.body && data.body.is_playing) {
-          setProgress(data.body.progress_ms);
-          setDuration(data.body.item.duration_ms);
-        }
-      });
-      console.log('ASD')
-    }, 1000);
-    
-  }
-  }, []);
+      progressRef.current = window.setInterval(() => {
+        spotifyApi.getMyCurrentPlaybackState().then(function (data) {
+          if (data.body && data.body.is_playing) {
+            setProgress(data.body.progress_ms);
+            setDuration(data.body.item.duration_ms);
+          }
+        });
+        console.log("ASD");
+      }, 1000);
+
+      return () => {
+        window.clearInterval(ref.current);
+        window.clearInterval(progressRef.current);
+      };
+    }
+  }, [spotifyApi]);
 
   useEffect(() => {
     setState({ artisname: artistName, trackname: trackName });
@@ -359,7 +363,11 @@ export default function MusicPlayer({
         <FontAwesomeIcon
           className="media-buttons padding"
           icon={faBackwardStep}
-          style={playlistArray.length<2?{pointerEvents:'none'}:{pointerEvents:'visible'}}
+          style={
+            playlistArray.length < 2
+              ? { pointerEvents: "none" }
+              : { pointerEvents: "visible" }
+          }
           onClick={() => prev()}
         />
         {isPlaying ? (
@@ -367,7 +375,6 @@ export default function MusicPlayer({
             onClick={() => handlePlayPause()}
             icon={faPause}
             className="media-buttons padding"
-            
           />
         ) : (
           <FontAwesomeIcon
@@ -380,12 +387,15 @@ export default function MusicPlayer({
         <FontAwesomeIcon
           icon={faForwardStep}
           className="media-buttons padding"
-          style={playlistArray.length<2?{pointerEvents:'none'}:{pointerEvents:'visible'}}
+          style={
+            playlistArray.length < 2
+              ? { pointerEvents: "none" }
+              : { pointerEvents: "visible" }
+          }
           onClick={() => {
             next();
             setCounter(0);
           }}
-    
         />
         <p className="">{ms2minutes(duration)}</p>
       </div>
