@@ -52,17 +52,17 @@ export default function MusicPlayer({
     });
   }, 1000);
 
-  useEffect(() => {
-    progressRef.current = setInterval(() => {
-      spotifyApi.getMyCurrentPlaybackState().then(function (data) {
-        if (data.body && data.body.is_playing) {
-          setProgress(data.body.progress_ms);
-          setDuration(data.body.item.duration_ms);
-        }
-      });
-    }, 1000);
-    return clearInterval(progressRef.current);
-  }, []);
+ // useEffect(() => {
+ //   progressRef.current = setInterval(() => {
+ //     spotifyApi.getMyCurrentPlaybackState().then(function (data) {
+ //       if (data.body && data.body.is_playing) {
+ //         setProgress(data.body.progress_ms);
+ //         setDuration(data.body.item.duration_ms);
+ //       }
+ //     });
+ //   }, 1000);
+ //   return clearInterval(progressRef.current);
+ // }, []);
 
   useEffect(() => {
     setState({ artisname: artistName, trackname: trackName });
