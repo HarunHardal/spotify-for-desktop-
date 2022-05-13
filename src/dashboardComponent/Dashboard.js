@@ -90,6 +90,7 @@ export default function Dashboard({ code }) {
         setAni(false);
       }, 1000);
     }, 100);
+    clearTimeout();
   }
   /* PREV FUNCTION */
   function prev() {
@@ -125,6 +126,7 @@ export default function Dashboard({ code }) {
         setAni(false);
       }, 1000);
     }, 500);
+    clearTimeout();
   }
 
   /*Set Current PlaybackState*/

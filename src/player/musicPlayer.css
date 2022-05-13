@@ -164,3 +164,12 @@
   font-size: 30px;
   filter: drop-shadow(0 0 5px #000);
 }
+
+@media (max-width: 450px){
+  .artist-name{font-size: 30px;}
+  .track-name{font-size: 20px ;}
+  .track-name-info .line {
+    height: 70px;
+    width: 3px;
+}
+}
