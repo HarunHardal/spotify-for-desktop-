@@ -35,7 +35,7 @@ export default function MusicPlayer({
   const progressRef = useRef();
   const [progress, setProgress] = useState(0);
   const [duration, setDuration] = useState(0);
-
+  console.log('ASSDASDASDASASDSAD')
   useEffect(() => {
    if (isPlaying) {
     if (!duration) return null;
