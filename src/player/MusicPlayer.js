@@ -39,7 +39,7 @@ export default function MusicPlayer({
 
   
     useInterval(()=>{
-      if(!duration1 || !isPlaying) return null;
+      if(!duration1 && !isPlaying) return null;
      setCounter(counter + 1);
     },duration1/100)
  
