@@ -54,11 +54,8 @@ export default function MusicPlayer({
       console.log('ASD')
     }, 1000);
     
-    return () => {
-      clearInterval(ref.current,progressRef.current);
-    };
   }
-  }, [spotifyApi]);
+  }, []);
 
   useEffect(() => {
     setState({ artisname: artistName, trackname: trackName });
