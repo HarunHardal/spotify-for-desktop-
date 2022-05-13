@@ -36,11 +36,17 @@ export default function MusicPlayer({
   const progressRef = useRef();
   const [progress, setProgress] = useState(0);
   const [duration1, setDuration] = useState(0);
-   useInterval(()=>{
-    setCounter(counter + 1);
-   },duration1/100)
+
+  
+    useInterval(()=>{
+      if(!duration1) return null;
+     setCounter(counter + 1);
+    },duration1/100)
+ 
+  
 
    useInterval(()=>{
+     if(!isPlaying) return null;
     spotifyApi.getMyCurrentPlaybackState().then(function (data) {
       if (data.body && data.body.is_playing) {
         setProgress(data.body.progress_ms);
