@@ -41,11 +41,6 @@ export default function MusicPlayer({
     if (!duration1) return null
     else if(!isPlaying) return null
     setCounter(counter + 1);
-  }, duration1 / 100);
-
-  useInterval(() => {
-    console.log(isPlaying)
-   if(!isPlaying) return null
     spotifyApi.getMyCurrentPlaybackState().then(function (data) {
       if (data.body && data.body.is_playing) {
         console.log('in api')
@@ -54,6 +49,12 @@ export default function MusicPlayer({
         console.log(data.body.progress_ms)
       }
     });
+  }, duration1 / 100);
+
+  useInterval(() => {
+    console.log(isPlaying)
+   if(!isPlaying) return null
+
   }, 1000);
 
  // useEffect(() => {
