@@ -41,20 +41,16 @@ export default function MusicPlayer({
     if (!duration1) return null
     else if(!isPlaying) return null
     setCounter(counter + 1);
-    spotifyApi.getMyCurrentPlaybackState().then(function (data) {
-      if (data.body && data.body.is_playing) {
-        console.log('in api')
-        setProgress(data.body.progress_ms);
-        setDuration(data.body.item.duration_ms);
-        console.log(data.body.progress_ms)
-      }
-    });
   }, duration1 / 100);
 
   useInterval(() => {
-    console.log(isPlaying)
    if(!isPlaying) return null
-
+    spotifyApi.getMyCurrentPlaybackState().then(function (data) {
+      if (data.body && data.body.is_playing) {
+        setProgress(data.body.progress_ms);
+        setDuration(data.body.item.duration_ms);
+      }
+    });
   }, 1000);
 
  // useEffect(() => {
