@@ -45,7 +45,7 @@ export default function MusicPlayer({
 
   useInterval(() => {
     console.log(isPlaying)
-   if(isPlaying){
+   if(isPlaying===true){
     spotifyApi.getMyCurrentPlaybackState().then(function (data) {
       if (data.body && data.body.is_playing) {
         setProgress(data.body.progress_ms);
