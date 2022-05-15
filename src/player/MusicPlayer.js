@@ -28,12 +28,12 @@ export default function MusicPlayer({
 }) {
   const [image, setImage] = useState();
   const [counter, setCounter] = useState(1);
-  const ref = useRef();
+  //const ref = useRef();
   const [state, setState] = useState({ artisname: "", trackname: "" });
   const stateRef = useRef(state);
   const [volume, setVolume] = useState(false);
   const [volumeLevel, setVolumeLevel] = useState();
-  const progressRef = useRef();
+  //const progressRef = useRef();
   const [progress, setProgress] = useState(0);
   const [duration1, setDuration] = useState(0);
 
@@ -407,7 +407,7 @@ export default function MusicPlayer({
         <FontAwesomeIcon className="volume-icon" icon={faVolumeHigh} />
       </div>
       <div className="media-controls">
-        <p className="">{ms2minutes(progress)}</p>
+        <p className="">{progress}</p>
         <FontAwesomeIcon
           className="media-buttons padding"
           icon={faBackwardStep}
