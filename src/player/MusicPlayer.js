@@ -44,6 +44,7 @@ export default function MusicPlayer({
   }, duration1 / 100);
 
   useInterval(() => {
+    console.log(isPlaying)
    if(isPlaying){
     spotifyApi.getMyCurrentPlaybackState().then(function (data) {
       if (data.body && data.body.is_playing) {
