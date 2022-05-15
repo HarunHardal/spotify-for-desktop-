@@ -44,7 +44,6 @@ export default function MusicPlayer({
   }, duration1 / 100);
 
   useInterval(() => {
-   if(!isPlaying) return null
     spotifyApi.getMyCurrentPlaybackState().then(function (data) {
       if (data.body && data.body.is_playing) {
         setProgress(data.body.progress_ms);
