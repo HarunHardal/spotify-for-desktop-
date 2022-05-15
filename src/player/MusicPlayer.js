@@ -43,17 +43,29 @@ export default function MusicPlayer({
     setCounter(counter + 1);
   }, duration1 / 100);
 
-  useInterval(() => {
-    console.log(isPlaying)
-   if(isPlaying===true){
-    spotifyApi.getMyCurrentPlaybackState().then(function (data) {
-      if (data.body && data.body.is_playing) {
-        setProgress(data.body.progress_ms);
-        setDuration(data.body.item.duration_ms);
-      }
-    });
-   }
-  }, 1000);
+  useInterval(()=>{
+    console.log(isPlaying , 'ASDASDASDAS')
+    if(!isPlaying) return null
+     spotifyApi.getMyCurrentPlaybackState().then(function (data) {
+       if (data?.body.is_playing) {
+         setProgress(data.body.progress_ms);
+         setDuration(data.body.item.duration_ms);
+       }
+     });
+  },1000)
+
+
+  // useInterval(() => {
+  //   console.log(isPlaying)
+  //  if(!isPlaying) return null
+  //   spotifyApi.getMyCurrentPlaybackState().then(function (data) {
+  //     if (data?.body.is_playing) {
+  //       setProgress(data.body.progress_ms);
+  //       setDuration(data.body.item.duration_ms);
+  //     }
+  //   });
+   
+  // }, 1000);
 
  // useEffect(() => {
  //   progressRef.current = setInterval(() => {
@@ -407,7 +419,7 @@ export default function MusicPlayer({
         <FontAwesomeIcon className="volume-icon" icon={faVolumeHigh} />
       </div>
       <div className="media-controls">
-        <p className="">{progress}</p>
+        <p className="">{ms2minutes(progress)}</p>
         <FontAwesomeIcon
           className="media-buttons padding"
           icon={faBackwardStep}
