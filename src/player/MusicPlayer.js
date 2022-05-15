@@ -46,12 +46,12 @@ export default function MusicPlayer({
 
   useInterval(() => {
     spotifyApi.getMyCurrentPlaybackState().then(function (data) {
-      if (data.body && data.body.is_playing) {
-        setProgress(data.body.progress_ms);
-        setDuration(data.body.item.duration_ms);
+      if (data?.body.is_playing) {
+        setProgress(data?.body.progress_ms);
+        setDuration(data?.body.item.duration_ms);
       }
     });
-  }, 100);
+  }, 1500);
 
  // useEffect(() => {
  //   progressRef.current = setInterval(() => {
