@@ -45,6 +45,7 @@ export default function MusicPlayer({
 
   function setDura(a){
     setProgress(a);
+    console.log('ADASDASDSADSAD')
   }
 
   useInterval(() => {
