@@ -42,9 +42,9 @@ export default function MusicPlayer({
     else if(!isPlaying) return null
     setCounter(counter + 1);
   }, duration1 / 100);
-
+  const a = spotifyApi.getMyCurrentPlaybackState();
   useInterval(() => {
-    spotifyApi.getMyCurrentPlaybackState().then(function (data) {
+    a.then(function (data) {
       if (data.body && data.body.is_playing) {
         setProgress(data.body.progress_ms);
         setDuration(data.body.item.duration_ms);
