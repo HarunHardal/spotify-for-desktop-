@@ -51,7 +51,7 @@ export default function MusicPlayer({
         console.log('in api')
         setProgress(data.body.progress_ms);
         setDuration(data.body.item.duration_ms);
-        console.log(ms2minutes(data.body.progress_ms))
+        console.log(data.body.progress_ms)
       }
     });
   }, 1000);
