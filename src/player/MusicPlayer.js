@@ -55,7 +55,7 @@ export default function MusicPlayer({
         setDuration(data?.body?.item.duration_ms);
       }
     });
-  }, 1000);
+  }, 1100);
 
  // useEffect(() => {
  //   progressRef.current = setInterval(() => {
