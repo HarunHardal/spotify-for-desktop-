@@ -49,10 +49,10 @@ export default function MusicPlayer({
 
   useInterval(() => {
     spotifyApi.getMyCurrentPlaybackState().then(function (data) {
-      if (data?.body.is_playing) {
+      if (data?.body?.is_playing) {
         console.log(data.body)
-        setDura(data?.body.progress_ms);
-        setDuration(data?.body.item.duration_ms);
+        setDura(data?.body?.progress_ms);
+        setDuration(data?.body?.item.duration_ms);
       }
     });
   }, 1000);
