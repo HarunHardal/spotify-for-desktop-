@@ -45,20 +45,20 @@ export default function MusicPlayer({
 
   function setDura(a) {
     setProgress(a);
-    console.log("1400 is playing");
+    console.log("1500 new");
   }
 
   useInterval(() => {
-    if (isPlaying) {
+    if (!isPlaying) return null 
       spotifyApi.getMyCurrentPlaybackState().then(function (data) {
-        if (data?.body?.is_playing) {
+        if (data.body && data.body.is_playing) {
           console.log(data.body);
           setDura(data?.body?.progress_ms);
           setDuration(data?.body?.item.duration_ms);
         }
       });
-    }
-  }, 1900);
+    
+  }, 1200);
 
   // useEffect(() => {
   //   progressRef.current = setInterval(() => {
