@@ -45,6 +45,7 @@ export default function MusicPlayer({
 
   function setDura(a){
     setProgress(a);
+    console.log('1400')
   }
 
   useInterval(() => {
@@ -55,7 +56,7 @@ export default function MusicPlayer({
         setDuration(data?.body?.item.duration_ms);
       }
     });
-  }, 1100);
+  }, 1400);
 
  // useEffect(() => {
  //   progressRef.current = setInterval(() => {
