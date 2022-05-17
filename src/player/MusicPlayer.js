@@ -54,11 +54,7 @@ export default function MusicPlayer({
       var ms = data.body
       setDura(ms?.progress_ms);
       console.log(data.body)
-             if (data.body && data.body.is_playing) {
-               setDuration(data.body.item.duration_ms);
-             }
            });
-    
   }, 1000);
 
   // useEffect(() => {
