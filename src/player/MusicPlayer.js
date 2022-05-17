@@ -45,14 +45,14 @@ export default function MusicPlayer({
 
   function setDura(a) {
     setProgress(a);
-    console.log("2000 new");
+    console.log("455");
   }
 
   useInterval(() => {
     if(!isPlaying) return null
     spotifyApi.getMyCurrentPlaybackState().then(function (data) {
       setDura(data?.body?.progress_ms);
-      console.log(data.body)
+      console.log(data.body.progress_ms)
              if (data.body && data.body.is_playing) {
             
                setDuration(data.body.item.duration_ms);
