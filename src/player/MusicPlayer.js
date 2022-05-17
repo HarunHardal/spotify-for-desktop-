@@ -58,7 +58,7 @@ export default function MusicPlayer({
         }
       });
     }
-  }, 1400);
+  }, 1900);
 
   // useEffect(() => {
   //   progressRef.current = setInterval(() => {
