@@ -49,6 +49,7 @@ export default function MusicPlayer({
   }
 
   useInterval(() => {
+    console.log('new')
     spotifyApi.getMyCurrentPlaybackState().then( (data)=> {
             if (data.body && data.body.is_playing) {
               setDura(data.body.progress_ms);
