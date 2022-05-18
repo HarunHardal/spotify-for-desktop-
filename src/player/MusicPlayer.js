@@ -46,7 +46,7 @@ export default function MusicPlayer({
 
   function setDura(a) {
     //setProgress(a);
-    console.log("2000 new");
+
   }
 
    useInterval(() => {
