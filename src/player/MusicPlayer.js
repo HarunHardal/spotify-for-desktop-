@@ -10,6 +10,7 @@ import {
   faVolumeHigh,
 } from "@fortawesome/free-solid-svg-icons";
 import useInterval from "use-interval";
+import progress from './MusicPlayerHook'
 
 export default function MusicPlayer({
   recentlyPlayed,
@@ -34,7 +35,7 @@ export default function MusicPlayer({
   const [volume, setVolume] = useState(false);
   const [volumeLevel, setVolumeLevel] = useState();
   //const progressRef = useRef();
-  const [progress, setProgress] = useState(0);
+  //const [progress, setProgress] = useState(0);
   const [duration1, setDuration] = useState(0);
 
   useInterval(() => {
@@ -44,25 +45,19 @@ export default function MusicPlayer({
   }, duration1 / 100);
 
   function setDura(a) {
-    setProgress(a);
+    //setProgress(a);
     console.log("2000 new");
   }
 
-  // useInterval(() => {
-  //   spotifyApi.getMyCurrentPlaybackState().then(function (data) {
-  //     console.log(data)
-  //            if (data.body && data.body.is_playing) {
-  //             setDura(data.body.progress_ms);
-  //              setDuration(data.body.item.duration_ms);
-  //            }
-  //          });
-  //         //  if(!isPlaying) return null
-  //         //  spotifyApi.getMyCurrentPlaybackState().then(function (data) {
-  //         //    var ms = data.body
-  //         //    setDura(ms?.progress_ms);
-  //         //    console.log(data.body)
-  //         //         });
-  // }, 1200);
+   useInterval(() => {
+     spotifyApi.getMyCurrentPlaybackState().then(function (data) {
+              if (data.body && data.body.is_playing) {
+               setDura(data.body.progress_ms);
+                setDuration(data.body.item.duration_ms);
+              }
+            });
+     
+   }, 1000);
 
   // useEffect(() => {
   //   progressRef.current = setInterval(() => {
