@@ -411,7 +411,7 @@ export default function MusicPlayer({
         <FontAwesomeIcon className="volume-icon" icon={faVolumeHigh} />
       </div>
       <div className="media-controls">
-        <p className="">{ms2minutes(progress(isPlaying))}</p>
+        <p className="">{ms2minutes(progress())}</p>
         <FontAwesomeIcon
           className="media-buttons padding"
           icon={faBackwardStep}
