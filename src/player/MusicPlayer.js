@@ -39,6 +39,7 @@ export default function MusicPlayer({
   const [duration1, setDuration] = useState(0);
 
   useInterval(() => {
+    console.log('newww')
     if (!duration1) return null;
     else if (!isPlaying) return null;
     setCounter(counter + 1);
