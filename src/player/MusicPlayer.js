@@ -39,7 +39,6 @@ export default function MusicPlayer({
   const [duration1, setDuration] = useState(0);
 
   useInterval(() => {
-    console.log('newww')
     if (!duration1) return null;
     else if (!isPlaying) return null;
     setCounter(counter + 1);
@@ -59,18 +58,6 @@ export default function MusicPlayer({
             });
      
    }, 1000);
-
-  // useEffect(() => {
-  //   progressRef.current = setInterval(() => {
-  //     spotifyApi.getMyCurrentPlaybackState().then(function (data) {
-  //       if (data.body && data.body.is_playing) {
-  //         setProgress(data.body.progress_ms);
-  //         setDuration(data.body.item.duration_ms);
-  //       }
-  //     });
-  //   }, 1000);
-  //   return clearInterval(progressRef.current);
-  // }, []);
 
   useEffect(() => {
     setState({ artisname: artistName, trackname: trackName });
@@ -109,48 +96,6 @@ export default function MusicPlayer({
       getRadiansInDegrees,
       finalAngleInDegrees,
       seekSetting;
-
-    // if (isPlaying) {
-    //   if (!duration1) return null;
-    //   ref.current = setInterval(() => {
-    //     // round.setAttribute(
-    //     //   "stroke-dasharray",
-    //     //   `${(counter / 100) * 825}, 2000`
-    //     // );
-    //     setCounter(counter + 1);
-    //   }, duration1 / 100);
-    //
-    //   return () => {
-    //     clearInterval(ref.current);
-    //   };
-    // }
-
-    // if (isPlaying) {
-    //   if (!duration1) return null;
-    //   ref.current = setInterval(() => {
-    //     setCounter(counter + 1);
-    //   }, duration1 / 100);
-
-    //   progressRef.current = setInterval(() => {
-    //     spotifyApi.getMyCurrentPlaybackState().then(function (data) {
-    //       if (data.body && data.body.is_playing) {
-    //         setProgress(data.body.progress_ms);
-    //         setDuration(data.body.item.duration_ms);
-    //       }
-    //     });
-    //   }, 1000);
-
-    //   return () => {
-    //     clearInterval(ref.current);
-    //   };
-    // }
-
-    // if(isPlaying){
-    //   if (counter === 99) {
-    //     next();
-    //     setCounter(2);
-    //   }
-    //}
 
     round.addEventListener(getMouseDown(), onMouseDown);
     document.addEventListener(getMouseUp(), onMouseUp);
