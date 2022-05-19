@@ -253,7 +253,7 @@ export default function MusicPlayer({
     var minute = Math.floor(ms / 60000);
     var second = ((ms % 60000) / 1000).toFixed(0);
     //return `${minute}:${(second < 10 ? "0" : "") + second}`;
-     return minute===isNaN()?'0:00':`${minute}:${(second < 10 ? "0" : "") + second}`;
+     return ms===isNaN()?'0:00':`${minute}:${(second < 10 ? "0" : "") + second}`;
   }
 
   const [seekBar, setSeekBar] = useState(false);
