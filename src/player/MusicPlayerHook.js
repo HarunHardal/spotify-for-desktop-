@@ -1,9 +1,6 @@
 import  { useEffect, useState } from 'react'
-import SpotifyWebApi from "spotify-web-api-node";
-const spotifyApi = new SpotifyWebApi({
-    clientId: "eb815cbe4f634fc4b5b2e4764971491b",
-  });
-export default function MusicPlayerHook() {
+
+export default function MusicPlayerHook(spotifyApi) {
     const [progress, setProgress] = useState()
     useEffect(()=>{
         
