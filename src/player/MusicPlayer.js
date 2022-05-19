@@ -29,13 +29,10 @@ export default function MusicPlayer({
 }) {
   const [image, setImage] = useState();
   const [counter, setCounter] = useState(1);
-  //const ref = useRef();
   const [state, setState] = useState({ artisname: "", trackname: "" });
   const stateRef = useRef(state);
   const [volume, setVolume] = useState(false);
   const [volumeLevel, setVolumeLevel] = useState();
-  //const progressRef = useRef();
-  //const [progress, setProgress] = useState(0);
   const [duration1, setDuration] = useState(0);
 
   useInterval(() => {
@@ -44,16 +41,11 @@ export default function MusicPlayer({
     setCounter(counter + 1);
   }, duration1 / 100);
 
-  function setDura(a) {
-    //setProgress(a);
-
-  }
-
    useInterval(() => {
      spotifyApi.getMyCurrentPlaybackState().then(function (data) {
               if (data.body && data.body.is_playing) {
-               setDura(data.body.progress_ms);
                 setDuration(data.body.item.duration_ms);
+                console.log(data.body)
               }
             });
      
