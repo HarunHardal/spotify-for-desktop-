@@ -9,10 +9,9 @@ export default function MusicPlayerHook(spotifyApi,isPlaying) {
             spotifyApi.getMyCurrentPlaybackState().then((data)=>{
                 if(data.body && data.body.is_playing){
                     setProgress(data.body.progress_ms)
-                    console.log('ASDASDASD')
                 }
             })
-        },1000)
+        },1100)
         return ()=> clearInterval(timer)
     },[])
  
