@@ -19,7 +19,7 @@
 .right-side-bar-component {
   position: absolute;
   top: 0;
-  left: -20%;
+  left: -50%;
   width: 20%;
   height: 100vh;
   background-color: rgb(0, 0, 0, 0.7);
