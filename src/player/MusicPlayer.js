@@ -42,12 +42,14 @@ export default function MusicPlayer({
   }, duration1 / 100);
 
    useInterval(() => {
-     spotifyApi.getMyCurrentPlaybackState().then(function (data) {
+     spotifyApi.getMyCurrentPlaybackState().then((data)=> {
               if (data.body && data.body.is_playing) {
                 setDuration(data.body.item.duration_ms);
-                console.log(data.body)
               }
             });
+     spotifyApi.getMyCurrentPlayingTrack().then((data)=> {
+    console.log(data.body);
+  });
      
    }, 1000);
 
