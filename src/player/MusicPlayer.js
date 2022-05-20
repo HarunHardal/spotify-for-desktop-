@@ -49,7 +49,7 @@ export default function MusicPlayer({
             });
     spotifyApi.getMyCurrentPlayingTrack().then(
       function (data) {
-        console.log( data.body.item.name);
+        console.log( data.body );
       }
     );
      
