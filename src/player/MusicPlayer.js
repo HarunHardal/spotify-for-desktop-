@@ -34,19 +34,20 @@ export default function MusicPlayer({
   const [volume, setVolume] = useState(false);
   const [volumeLevel, setVolumeLevel] = useState();
   const [duration1, setDuration] = useState();
+  const [seekBar, setSeekBar] = useState(false);
 
   useInterval(() => {
     if (!duration1) return null;
     else if (!isPlaying) return null;
     setCounter(counter + 1);
   }, duration1 / 100);
-  // useInterval(() => {
-  //   if(!spotifyApi) return null
-  //   spotifyApi.getMyCurrentPlaybackState().then((data)=> {
-  //            if (data.body && data.body.is_playing) {
-  //              setDuration(data.body.item.duration_ms);}
-  //          });
-  // }, 1000);
+   useInterval(() => {
+     if(!spotifyApi) return null
+     spotifyApi.getMyCurrentPlaybackState().then((data)=> {
+              if (data.body && data.body.is_playing) {
+                setDuration(data.body.item.duration_ms);}
+            });
+   }, 1000);
 
   useEffect(() => {
     setState({ artisname: artistName, trackname: trackName });
@@ -249,11 +250,8 @@ export default function MusicPlayer({
   function ms2minutes(ms) {
     var minute = Math.floor(ms / 60000);
     var second = ((ms % 60000) / 1000).toFixed(0);
-    //return `${minute}:${(second < 10 ? "0" : "") + second}`;
      return isNaN(ms)?'0:00':`${minute}:${(second < 10 ? "0" : "") + second}`;
   }
-
-  const [seekBar, setSeekBar] = useState(false);
 
   return (
     <div
