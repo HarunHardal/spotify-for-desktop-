@@ -14,7 +14,7 @@ useEffect(()=>{
   if(a){
     setTimeout(()=>{
       getCurrentPlayback()
-    },100)
+    },1100)
     _a(false)
   }
 
