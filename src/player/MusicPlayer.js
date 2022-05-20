@@ -40,22 +40,11 @@ export default function MusicPlayer({
     else if (!isPlaying) return null;
     setCounter(counter + 1);
   }, duration1 / 100);
-
-  const [albumImg, setAlbumImg] = useState();
    useInterval(() => {
      spotifyApi.getMyCurrentPlaybackState().then((data)=> {
               if (data.body && data.body.is_playing) {
-                setDuration(data.body.item.duration_ms);
-                   spotifyApi.getMyCurrentPlayingTrack().then(
-                     function (data) {
-                      console.log( data.body.album.images[0]);
-                       setAlbumImg(data.body.album.images[0])
-      }
-    );
-              }
+                setDuration(data.body.item.duration_ms);}
             });
-    
-     
    }, 1000);
 
   useEffect(() => {
@@ -398,7 +387,7 @@ export default function MusicPlayer({
         <p className="">{ms2minutes(duration1)}</p>
       </div>
       <div style={{ pointerEvents: "none" }} className="album-image">
-        {<img src={albumImg?.url} alt="a"></img>}
+        {<img src={image?.url} alt="a"></img>}
       </div>
     </div>
   );
