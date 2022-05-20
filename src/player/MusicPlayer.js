@@ -47,9 +47,11 @@ export default function MusicPlayer({
                 setDuration(data.body.item.duration_ms);
               }
             });
-     spotifyApi.getMyCurrentPlayingTrack().then((data)=> {
-    console.log(data.body);
-  });
+    spotifyApi.getMyCurrentPlayingTrack().then(
+      function (data) {
+        console.log( data.body.item.name);
+      }
+    );
      
    }, 1000);
 
