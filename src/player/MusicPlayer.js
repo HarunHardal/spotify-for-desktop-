@@ -33,19 +33,20 @@ export default function MusicPlayer({
   const stateRef = useRef(state);
   const [volume, setVolume] = useState(false);
   const [volumeLevel, setVolumeLevel] = useState();
-  const [duration1, setDuration] = useState(0);
+  const [duration1, setDuration] = useState();
 
   useInterval(() => {
     if (!duration1) return null;
     else if (!isPlaying) return null;
     setCounter(counter + 1);
   }, duration1 / 100);
-   useInterval(() => {
-     spotifyApi.getMyCurrentPlaybackState().then((data)=> {
-              if (data.body && data.body.is_playing) {
-                setDuration(data.body.item.duration_ms);}
-            });
-   }, 1000);
+  // useInterval(() => {
+  //   if(!spotifyApi) return null
+  //   spotifyApi.getMyCurrentPlaybackState().then((data)=> {
+  //            if (data.body && data.body.is_playing) {
+  //              setDuration(data.body.item.duration_ms);}
+  //          });
+  // }, 1000);
 
   useEffect(() => {
     setState({ artisname: artistName, trackname: trackName });
