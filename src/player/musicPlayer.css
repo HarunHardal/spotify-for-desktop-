@@ -121,7 +121,7 @@ svg {
   bottom: 28%;
   pointer-events: none;
   display: grid;
-  grid-template-columns:repeat(5,50px);
+  grid-template-columns:repeat(5,40px);
   column-gap: 30px;
   align-items: center;
 }
