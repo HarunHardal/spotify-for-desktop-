@@ -103,7 +103,7 @@ svg {
   text-shadow: 0 0 5px rgb(0, 0, 0);
 }
 .animation{
-  animation: animate 1.3s ease-in-out;
+  animation: animate 1.5s ease-in-out;
 }
 @keyframes animate{
   from{
