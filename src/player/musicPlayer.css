@@ -5,6 +5,9 @@
   justify-content: center;
   align-items: center;
 }
+svg {
+  max-width: 100%
+}
 #circle {
   position: absolute;
   width: 400px;
