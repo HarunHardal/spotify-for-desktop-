@@ -46,7 +46,7 @@ export default function Dashboard({ code }) {
     setAni(true);
     setTimeout(() => {
       setAni(false);
-    }, 1000);
+    }, 1500);
     clearTimeout();
   }
 
@@ -88,8 +88,8 @@ export default function Dashboard({ code }) {
       setAni(true);
       setTimeout(() => {
         setAni(false);
-      }, 1000);
-    }, 100);
+      }, 1500);
+    }, 1000);
     clearTimeout();
   }
   /* PREV FUNCTION */
@@ -124,8 +124,8 @@ export default function Dashboard({ code }) {
       setAni(true);
       setTimeout(() => {
         setAni(false);
-      }, 1000);
-    }, 500);
+      }, 1500);
+    }, 1000);
     clearTimeout();
   }
 
