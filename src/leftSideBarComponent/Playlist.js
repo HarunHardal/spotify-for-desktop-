@@ -16,8 +16,7 @@ export default function Playlist({
     console.log(ms)
     var minute = Math.floor(ms / 60000);
     var second = ((ms % 60000) / 1000).toFixed(0);
-    return 'aasdasd' 
-    //`${minute}:${(second < 10 ? "0" : "") + second}`;
+    return `${minute}:${(second < 10 ? "0" : "") + second}`;
   }
 
   function msToTime() {
