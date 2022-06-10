@@ -107,6 +107,7 @@ export default function Playlist({
               </td>
               <td>{e.track?.album.name}</td>
               <td> {isNaN(ms2minute(e.track?.duration_ms))?null:ms2minute(e.track?.duration_ms)} </td>
+{console.log(e,e.track?.duration_ms)}
             </tr>
           ))}
         </tbody>
