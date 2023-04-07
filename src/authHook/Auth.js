@@ -13,7 +13,7 @@ export default function Auth(code) {
 
   useEffect(() => {
     axios
-      .post("https://spotifyfordesktop.herokuapp.com/login", {
+      .post("https://spotifyfordesktop.onrender.com/login", {
         code,
       })
       .then((res) => {
@@ -31,7 +31,7 @@ export default function Auth(code) {
     if (!refreshToken || !expiresIn) return
     const timeOut = setInterval(() => {
       axios
-        .post("https://spotifyfordesktop.herokuapp.com/refresh", {
+        .post("https://spotifyfordesktop.onrender.com/refresh", {
           refreshToken,
         })
         .then((res) => {
